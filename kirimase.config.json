@@ -1,0 +1,16 @@
+{
+  "hasSrc": true,
+  "packages": [
+    "prisma",
+    "next-auth",
+    "trpc",
+    "shadcn-ui",
+    "resend"
+  ],
+  "preferredPackageManager": "pnpm",
+  "rootPath": "src/",
+  "provider": "planetscale",
+  "orm": "prisma",
+  "driver": "mysql",
+  "auth": "next-auth"
+}
