@@ -10,14 +10,21 @@ export default function Home() {
       <MaxWidthWrapper className="mb-12 mt-28 sm:mt-40 flex flex-col items-center justify-center text-center">
         <div className="mx-auto mb-4 flex max-w-fit items-center justify-center space-x-2 overflow-hidden rounded-full border border-grey-200 bg-white px-7 py-2 shadow-md backdrop-blur trasition-all hover:border-grey-300 hover:bg-white/50">
           <p className="text-sm font-semibold text-grey-700">
-            llavez esta vivo
+            llavez is under construction 🚧
           </p>
         </div>
+        <br />
         <h1 className="max-w-4xl text-5xl font-bold md:text-6xl lg:text-7xl">
-          Limpio. <span className="text-yellow-500">Rapido.</span> Simple.
+          AI doesn&#8217;t have to be spooky 👻
+          <br />
+          <br />
+          Get your business <br />
+          <span className="text-yellow-500">online</span> in minutes.
         </h1>
         <p className="mt-5 max-w-prose text-zinc-700 sm:text-lg">
-          llavez te ayuda a ponerte en las redes sin complicaciones.
+          Have a conversation 🗣️💬
+          <br />
+          and get a website!
         </p>
         <Link
           className={buttonVariants({
@@ -28,7 +35,8 @@ export default function Home() {
           target="_blank"
           rel="noopener"
         >
-          Comienza <ArrowRight className="ml-w h-5 w-5" />
+          Get Started&nbsp;
+          <ArrowRight className="ml-w h-5 w-5" />
         </Link>
       </MaxWidthWrapper>
       <div>
@@ -79,7 +87,7 @@ export default function Home() {
         <div className="mb-12 px-6 lg:px-8">
           <div className="mx-auto max-w-2xl sm:text-center">
             <h2 className="mt-2 font=bold text-4xl text-grey-900 sm:text-5xl">
-              Pon su sitio web en funcionamiento en minutos!
+              Get your website up and running in minutes!
             </h2>
             <p className="mt-r text-lg text-grey-600">
               Entrar en la web nunca ha sido tan fácil como con llavez
