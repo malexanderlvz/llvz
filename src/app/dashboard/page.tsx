@@ -1,12 +1,15 @@
-import { useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
+import { getServerSession } from "next-auth";
 
-const Page = () => {
-  const { data: session, status } = useSession();
-  const user = session?.user;
-
-  if (!session) redirect("/api/auth/signin?callbackUrl=/dashboard");
-
-  return <div></div>;
-};
-export default Page;
+export default async function Dashboard() {
+  const session = await getServerSession();
+  return (
+    <>
+      getServerSession Result
+      {session?.user?.name ? (
+        <div>{session?.user?.name}</div>
+      ) : (
+        <div>Not logged in</div>
+      )}
+    </>
+  );
+}

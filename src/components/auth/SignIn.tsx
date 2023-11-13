@@ -8,7 +8,7 @@ export default function SignIn() {
   const { data: session, status } = useSession();
 
   if (status === "loading")
-    return <div className="text-sm font-medium">Cargando...</div>;
+    return <div className="text-sm font-medium">Loading...</div>;
 
   if (session) {
     return (
@@ -22,7 +22,7 @@ export default function SignIn() {
           })}
           onClick={() => signOut()}
         >
-          Desconectar
+          Disconnect
         </Link>
       </>
     );
@@ -36,7 +36,7 @@ export default function SignIn() {
         })}
         onClick={() => signIn()}
       >
-        Iniciar <ArrowRight className="ml-1.5 h-5 w-5" />
+        Start <ArrowRight className="ml-1.5 h-5 w-5" />
       </Link>
     </>
   );

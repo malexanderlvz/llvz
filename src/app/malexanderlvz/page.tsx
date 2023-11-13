@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Image, { StaticImageData } from "next/image";
-import profileImage from "../../../public/marcos-2023q3.gif";
+import profileImage from "../../../public/marcos-hero_nov2023.png";
 import Typewriter from "@/components/TypeWriter";
 import { cn } from "@/lib/utils";
 import jalapenosMobile from "../../../public/jalapenos-mobile.svg";
@@ -46,22 +46,14 @@ const sites: PortfolioSite[] = [
 const Home = () => {
   return (
     <>
-      <div>
-        <div className="bg-black relative mt-[56px]">
-          <div className="absolute max-w-sm mx-auto z-10 inset-x-0">
-            <Typewriter
-              text={`Hey, I'm\nMarcos.`}
-              delayTime={75}
-              className="text-4xl font-bold text-slate-100 text-left whitespace-pre-line"
-            />
-          </div>
-
+      <MaxWidthWrapper className="relative mt-4 flex flex-col items-center text-center">
+        <div className="max-w-[800px] flex flex-col justify-center">
           <Image
             src={profileImage}
             alt="Picture of the author"
-            width={500}
-            height={500}
-            className="rounded-full -mt-14 max-w-xs z-0 relative mx-auto pt-8"
+            width={756}
+            height={1008}
+            className=""
           />
         </div>
         {/* <div className="flex flex-col items-center justify-center py-2">
@@ -70,8 +62,6 @@ const Home = () => {
             California.
           </p>
         </div> */}
-      </div>
-      <MaxWidthWrapper className="bg-neutral-900">
         <SitesSection sites={sites} />
       </MaxWidthWrapper>
     </>
@@ -104,7 +94,7 @@ const Site = ({
   previewImage,
 }: PortfolioSite) => {
   return (
-    <div className="bg-black rounded-2xl pt-7">
+    <div className="pt-7">
       <h3
         className={cn(
           "bg-gradient-to-b bg-clip-text text-transparent text-4xl font-bold text-center flex flex-col mb-8 mx-9",
@@ -115,13 +105,13 @@ const Site = ({
       </h3>
       {imageType === "mobile" ? (
         <div className="bg-zinc-800 rounded-t-2xl max-w-[264px] pt-1 pr-1 pl-1 flex flex-col mx-9">
-          <div className="border-t-2 border-r-2 border-l-2 border-zinc-500 rounded-t-2xl pt-[3px] pr-[3px] pl-[3px]">
+          <div className="border-t-2 border-r-2 border-l-2 border-zinc-500 rounded-t-2xl pt-[3px] pr-[3px] pl-[3px] drop-shadow-xl">
             <Image
               src={previewImage}
               alt="Picture of the author"
               width={500}
               height={500}
-              className="z-0 relative mx-auto rounded-t-2xl"
+              className="z-0 relative mx-auto rounded-t-2xl drop-shadow-xl"
             />
           </div>
         </div>
