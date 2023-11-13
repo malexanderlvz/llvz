@@ -7,36 +7,63 @@ import jalapenosMobile from "../../../public/jalapenos-mobile.svg";
 import idealjewelryMobile from "../../../public/idealjewelry-mobile.svg";
 import getFadedMobile from "../../../public/getfaded-mobile.svg";
 import learknDesktop from "../../../public/learkn-desktop.svg";
+import bienMichesMobile from "../../../public/bien-miches-portfolio.png";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
-type PortfolioSite = {
+type PortfolioJob = {
+  company: string;
   title: string;
+  time: string;
   titleStyle: string;
   imageType: "mobile" | "desktop";
   previewImage: StaticImageData;
 };
 
-const sites: PortfolioSite[] = [
+const jobs: PortfolioJob[] = [
   {
-    title: "Jalapeños",
+    company: "Bien Miches",
+    title: "co-Founder & Software Engineer",
+    time: "Now",
+    titleStyle: "from-orange-700 to-yellow-300",
+    imageType: "mobile",
+    previewImage: bienMichesMobile,
+  },
+  {
+    company: "FreeAgent CRM",
+    title: "Director Of Professional Services",
+    time: "2022",
     titleStyle: "from-orange-700 to-yellow-300",
     imageType: "mobile",
     previewImage: jalapenosMobile,
   },
   {
-    title: "Ideal Jewelry",
+    company: "Jalapeños",
+    title: "co-Founder & Software Engineer",
+    time: "Now",
+    titleStyle: "from-orange-700 to-yellow-300",
+    imageType: "mobile",
+    previewImage: jalapenosMobile,
+  },
+  {
+    company: "Ideal Jewelry",
     titleStyle: "from-blue-300 to-white",
     imageType: "mobile",
     previewImage: idealjewelryMobile,
   },
   {
-    title: "Get Faded",
+    company: "Get Faded",
     titleStyle: "from-black to-yellow-600",
     imageType: "mobile",
     previewImage: getFadedMobile,
   },
   {
-    title: "Learkn",
+    company: "Learkn",
     titleStyle: "from-violet-700 to-white",
     imageType: "desktop",
     previewImage: learknDesktop,
@@ -62,47 +89,49 @@ const Home = () => {
             California.
           </p>
         </div> */}
-        <SitesSection sites={sites} />
+        <SitesSection jobs={jobs} />
       </MaxWidthWrapper>
     </>
   );
 };
 
-const SitesSection = ({ sites }: { sites: PortfolioSite[] }) => {
+const SitesSection = ({ jobs }: { jobs: PortfolioJob[] }) => {
   return (
-    <div className="flex flex-col justify-center items-center py-6 gap-8">
-      {sites.map((site) => {
-        {
-          return (
-            <Site
-              key={site.title}
-              title={site.title}
-              imageType={site.imageType}
-              titleStyle={site.titleStyle}
-              previewImage={site.previewImage}
-            />
-          );
-        }
-      })}
-    </div>
+    <>
+      <Accordion type="single" collapsible className="w-full">
+        {/*<div className="flex flex-col justify-center items-center py-6 gap-8">*/}
+        {jobs.map((job) => {
+          {
+            return (
+              <AccordionItem value={job.company}>
+                <AccordionTrigger className="!no-underline">
+                  <div className="w-16 uppercase">{job.time}</div>
+                  <div className="flex flex-col items-start">
+                    <div className="">{job.title}</div>
+                    <div className="text-sm uppercase">{job.company}</div>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent>
+                  <Site
+                    key={job.title}
+                    title={job.title}
+                    imageType={job.imageType}
+                    titleStyle={job.titleStyle}
+                    previewImage={job.previewImage}
+                  />
+                </AccordionContent>
+              </AccordionItem>
+            );
+          }
+        })}
+        {/*</div>*/}
+      </Accordion>
+    </>
   );
 };
-const Site = ({
-  title,
-  titleStyle,
-  imageType,
-  previewImage,
-}: PortfolioSite) => {
+const Site = ({ title, titleStyle, imageType, previewImage }: PortfolioJob) => {
   return (
-    <div className="pt-7">
-      <h3
-        className={cn(
-          "bg-gradient-to-b bg-clip-text text-transparent text-4xl font-bold text-center flex flex-col mb-8 mx-9",
-          titleStyle
-        )}
-      >
-        {title}
-      </h3>
+    <div className="">
       {imageType === "mobile" ? (
         <div className="bg-zinc-800 rounded-t-2xl max-w-[264px] pt-1 pr-1 pl-1 flex flex-col mx-9">
           <div className="border-t-2 border-r-2 border-l-2 border-zinc-500 rounded-t-2xl pt-[3px] pr-[3px] pl-[3px] drop-shadow-xl">
