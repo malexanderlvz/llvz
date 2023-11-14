@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import profileImage from "../../../public/marcos-hero_nov2023.png";
@@ -15,6 +16,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import Link from "next/link";
+import { buttonVariants } from "@/components/ui/button";
 
 type PortfolioJob = {
   company: string;
@@ -73,24 +76,68 @@ const jobs: PortfolioJob[] = [
 const Home = () => {
   return (
     <>
-      <MaxWidthWrapper className="relative mt-4 flex flex-col items-center text-center">
-        <div className="max-w-[800px] flex flex-col justify-center">
-          <Image
-            src={profileImage}
-            alt="Picture of the author"
-            width={756}
-            height={1008}
-            className=""
-          />
-        </div>
-        {/* <div className="flex flex-col items-center justify-center py-2">
+      <div className="hero">
+        <div
+          className={cn(
+            "hero-wrapper mt-4 flex flex-col items-center text-center h-fit pb-3 w-fit"
+          )}
+        >
+          <div className="hero-image">
+            <div className="max-w-[800px] flex place-content-center flex-col justify-center">
+              <Image
+                src={profileImage}
+                alt="Picture of the author"
+                width={756}
+                height={1008}
+                className=""
+              />
+              <div className="hero-sticky">
+                <div className="hero-text-container">
+                  <div className="aboveHintScrollbar">
+                    <h2 className="hero-about-me-text uppercase text-white mt-0 mx-9 mb-4 text-3xl">
+                      About Me
+                    </h2>
+                    <Link
+                      href={"#my-work"}
+                      className={cn(
+                        buttonVariants({ variant: "default", size: "lg" })
+                      )}
+                    >
+                      My Work
+                    </Link>
+                  </div>
+                </div>
+                <div></div>
+              </div>
+            </div>
+            <div className="hero-sticky">
+              <div className="hero-text-container">
+                <div className="aboveHintScrollbar">
+                  <h2 className="hero-about-me-text uppercase text-foreground mt-0 mx-9 mb-4 text-3xl">
+                    About Me
+                  </h2>
+                  <Link
+                    href={"#my-work"}
+                    className={cn(
+                      buttonVariants({ variant: "default", size: "lg" })
+                    )}
+                  >
+                    My Work
+                  </Link>
+                </div>
+              </div>
+              <div></div>
+            </div>
+          </div>
+          {/* <div className="flex flex-col items-center justify-center py-2">
           <p className="text-lg text-gray-600 mt-4">
             Hello I&apos;m Marcos, a software engineer based in Santa Cruz,
             California.
           </p>
         </div> */}
-        <SitesSection jobs={jobs} />
-      </MaxWidthWrapper>
+        </div>
+      </div>
+      <SitesSection jobs={jobs} />
     </>
   );
 };
