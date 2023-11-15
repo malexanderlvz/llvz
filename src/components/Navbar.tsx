@@ -30,7 +30,7 @@ const Navbar = () => {
             }`
           )}
         >
-          <div className="fixed top-0 left-0 right-0 grainy py-6">
+          <div className="fixed top-0 left-0 right-0 grainy py-4">
             <MaxWidthWrapper className="">
               <div className="flex w-full justify-end align-middle h-6 relative">
                 <Menu />
@@ -38,7 +38,7 @@ const Navbar = () => {
 
               <div
                 className={cn(
-                  `logo-name z-50 transform-gpu transition-[width] duration-700 will-change-[width,transform] translate-y-6 w-full logo-container h-auto cubic-bezier ${
+                  `logo-name mt-[2px] z-50 transform-gpu transition-[width] duration-700 will-change-[width,transform] translate-y-6 w-full logo-container h-auto cubic-bezier ${
                     scrolled ? `w-[143px] -translate-y-6 h-0` : ``
                   }`
                 )}

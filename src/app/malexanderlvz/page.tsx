@@ -79,47 +79,32 @@ const Home = () => {
       <div className="hero">
         <div
           className={cn(
-            "hero-wrapper mt-4 flex flex-col items-center text-center h-fit pb-3 w-fit"
+            "hero-wrapper flex flex-col items-center text-center h-fit py-3 w-fit"
           )}
         >
-          <div className="hero-image">
-            <div className="max-w-[800px] flex place-content-center flex-col justify-center">
-              <Image
-                src={profileImage}
-                alt="Picture of the author"
-                width={756}
-                height={1008}
-                className=""
-              />
-              <div className="hero-sticky">
-                <div className="hero-text-container">
-                  <div className="aboveHintScrollbar">
-                    <h2 className="hero-about-me-text uppercase text-white mt-0 mx-9 mb-4 text-3xl">
-                      About Me
-                    </h2>
-                    <Link
-                      href={"#my-work"}
-                      className={cn(
-                        buttonVariants({ variant: "default", size: "lg" })
-                      )}
-                    >
-                      My Work
-                    </Link>
-                  </div>
-                </div>
-                <div></div>
+          <div className="hero-image-wrapper">
+            <div className="hero-image">
+              <div className="max-w-[800px] flex place-content-center flex-col justify-center">
+                <Image
+                  src={profileImage}
+                  alt="Picture of the author"
+                  width={756}
+                  height={1008}
+                  className=""
+                />
               </div>
             </div>
             <div className="hero-sticky">
               <div className="hero-text-container">
                 <div className="aboveHintScrollbar">
-                  <h2 className="hero-about-me-text uppercase text-foreground mt-0 mx-9 mb-4 text-3xl">
+                  <h2 className="hero-about-me-text uppercase text-white mt-0 mx-9 mb-4 text-3xl">
                     About Me
                   </h2>
                   <Link
                     href={"#my-work"}
                     className={cn(
-                      buttonVariants({ variant: "default", size: "lg" })
+                      buttonVariants({ variant: "default", size: "lg" }),
+                      "bg-white text-black"
                     )}
                   >
                     My Work
@@ -129,12 +114,25 @@ const Home = () => {
               <div></div>
             </div>
           </div>
-          {/* <div className="flex flex-col items-center justify-center py-2">
-          <p className="text-lg text-gray-600 mt-4">
-            Hello I&apos;m Marcos, a software engineer based in Santa Cruz,
-            California.
-          </p>
-        </div> */}
+          <div className="hero-sticky">
+            <div className="hero-text-container">
+              <div className="aboveHintScrollbar">
+                <h2 className="hero-about-me-text uppercase text-foreground mt-0 mx-9 mb-4 text-3xl text-black">
+                  About Me
+                </h2>
+                <Link
+                  href={"#my-work"}
+                  className={cn(
+                    buttonVariants({ variant: "default", size: "lg" }),
+                    "bg-black"
+                  )}
+                >
+                  My Work
+                </Link>
+              </div>
+            </div>
+            <div></div>
+          </div>
         </div>
       </div>
       <SitesSection jobs={jobs} />
