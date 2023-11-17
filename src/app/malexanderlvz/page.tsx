@@ -18,6 +18,10 @@ import {
 } from "@/components/ui/accordion";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
+import { Josefin_Sans, Raleway } from "next/font/google";
+
+const josefinSans = Josefin_Sans({ subsets: ["latin"] });
+const raleway = Raleway({ subsets: ["latin"] });
 
 type PortfolioJob = {
   company: string;
@@ -84,27 +88,33 @@ const Home = () => {
         >
           <div className="hero-image-wrapper">
             <div className="hero-image">
-              <div className="max-w-[800px] flex place-content-center flex-col justify-center">
+              <div className="hero-img">
                 <Image
                   src={profileImage}
                   alt="Picture of the author"
                   width={756}
                   height={1008}
-                  className=""
+                  className="absolute h-full w-full top-0 right-0 bottom-0 left-0"
                 />
               </div>
             </div>
             <div className="hero-sticky">
               <div className="hero-text-container">
-                <div className="aboveHintScrollbar">
-                  <h2 className="hero-about-me-text uppercase text-white mt-0 mx-9 mb-4 text-3xl">
+                <div className="aboveHintScrollbar block">
+                  <h2
+                    className={cn(
+                      "hero-about-me-text uppercase text-white mt-0 mx-9 mb-4 text-3xl font-light",
+                      josefinSans.className
+                    )}
+                  >
                     About Me
                   </h2>
                   <Link
-                    href={"#my-work"}
+                    href="#my_work"
                     className={cn(
                       buttonVariants({ variant: "default", size: "lg" }),
-                      "bg-white text-black"
+                      "bg-white text-black uppercase font-bold text-xs",
+                      raleway.className
                     )}
                   >
                     My Work
@@ -117,14 +127,20 @@ const Home = () => {
           <div className="hero-sticky">
             <div className="hero-text-container">
               <div className="aboveHintScrollbar">
-                <h2 className="hero-about-me-text uppercase text-foreground mt-0 mx-9 mb-4 text-3xl text-black">
+                <h2
+                  className={cn(
+                    "hero-about-me-text uppercase text-foreground mt-0 mx-9 mb-4 text-3xl text-black font-light",
+                    josefinSans.className
+                  )}
+                >
                   About Me
                 </h2>
                 <Link
-                  href={"#my-work"}
+                  href="#my_work"
                   className={cn(
                     buttonVariants({ variant: "default", size: "lg" }),
-                    "bg-black"
+                    "bg-black uppercase font-bold text-xs",
+                    raleway.className
                   )}
                 >
                   My Work
@@ -135,42 +151,64 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <div id="my_work" className="about-me pb-20">
+        <MaxWidthWrapper>
+          <p className="text-3xl leading-[3rem] font-light">
+            I plan, design, and develop{" "}
+            <span className="font-bold uppercase text-2xl">data centric</span>{" "}
+            websites & online products.
+          </p>
+        </MaxWidthWrapper>
+      </div>
       <SitesSection jobs={jobs} />
     </>
   );
 };
 
+const aboutMeSection = function () {
+  <div className="about-me-section">
+    <h2 className="">About Me</h2>
+  </div>;
+};
+
 const SitesSection = ({ jobs }: { jobs: PortfolioJob[] }) => {
   return (
     <>
-      <Accordion type="single" collapsible className="w-full">
-        {/*<div className="flex flex-col justify-center items-center py-6 gap-8">*/}
-        {jobs.map((job) => {
-          {
-            return (
-              <AccordionItem value={job.company}>
-                <AccordionTrigger className="!no-underline">
-                  <div className="w-16 uppercase">{job.time}</div>
-                  <div className="flex flex-col items-start">
-                    <div className="">{job.title}</div>
-                    <div className="text-sm uppercase">{job.company}</div>
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent>
-                  <Site
-                    key={job.title}
-                    title={job.title}
-                    imageType={job.imageType}
-                    titleStyle={job.titleStyle}
-                    previewImage={job.previewImage}
-                  />
-                </AccordionContent>
-              </AccordionItem>
-            );
-          }
-        })}
-        {/*</div>*/}
-      </Accordion>
+      <MaxWidthWrapper>
+        <h2
+          className={cn("uppercase font-light text-3xl", josefinSans.className)}
+        >
+          My Work
+        </h2>
+        <Accordion type="single" collapsible className="w-full">
+          {/*<div className="flex flex-col justify-center items-center py-6 gap-8">*/}
+          {jobs.map((job) => {
+            {
+              return (
+                <AccordionItem value={job.company}>
+                  <AccordionTrigger className="!no-underline">
+                    <div className="w-16 uppercase">{job.time}</div>
+                    <div className="flex flex-col items-start">
+                      <div className="">{job.title}</div>
+                      <div className="text-sm uppercase">{job.company}</div>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <Site
+                      key={job.title}
+                      title={job.title}
+                      imageType={job.imageType}
+                      titleStyle={job.titleStyle}
+                      previewImage={job.previewImage}
+                    />
+                  </AccordionContent>
+                </AccordionItem>
+              );
+            }
+          })}
+          {/*</div>*/}
+        </Accordion>
+      </MaxWidthWrapper>
     </>
   );
 };

@@ -7,7 +7,13 @@ import { cn } from "@/lib/utils";
 import Navbar from "@/components/Navbar";
 import { getServerSession } from "next-auth";
 import SessionProvider from "@/lib/auth/SessionProvider";
-
+import Head from "next/head";
+import Script from "next/script";
+<script
+  async
+  src="https://analytics.eu.umami.is/script.js"
+  data-website-id="738ae2f4-acb4-47dc-95b1-6fca4dee726f"
+></script>;
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -22,8 +28,15 @@ export default async function RootLayout({
 }) {
   const session = await getServerSession();
   return (
-    <html lang="en" className="light">
-      <body className={cn("font-sans antialiased grainy", inter.className)}>
+    <html lang="en" className="light antialiased grainy">
+      <Head>
+        <script
+          async
+          src="https://analytics.eu.umami.is/script.js"
+          data-website-id="738ae2f4-acb4-47dc-95b1-6fca4dee726f"
+        ></script>
+      </Head>
+      <body className={cn("font-sans bg-transparent", inter.className)}>
         <SessionProvider session={session} refetchInterval={5 * 60}>
           <TrpcProvider>
             <Navbar />
